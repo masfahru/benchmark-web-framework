@@ -5,11 +5,9 @@ WORKDIR /app
 
 COPY --chown=node:node . .
 
-RUN yarn init -y
-
 ENV NODE_ENV production
 
-RUN yarn add fastify
+RUN yarn init -y && yarn add fastify && yarn cache clean --all --force
 
 USER node
 

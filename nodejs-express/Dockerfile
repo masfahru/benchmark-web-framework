@@ -5,11 +5,9 @@ WORKDIR /app
 
 COPY --chown=node:node . .
 
-RUN yarn init -y
-
 ENV NODE_ENV production
 
-RUN yarn add express body-parser
+RUN yarn init -y && yarn add express body-parser && yarn cache clean --all --force
 
 USER node
 
