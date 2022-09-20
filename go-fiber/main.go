@@ -41,18 +41,18 @@ var (
 		c.Set("Connection", "Keep-Alive")
 		c.Set("Keep-Alive", "timeout=72")
 		return c.JSON(StatusOk{"OK"})
-  }
+	}
 
 	handlerPost = func(c *fiber.Ctx) error {
-    data := &Information{}
+		data := &Information{}
 
-    if err := c.BodyParser(data); err != nil {
-      return err
-    }
+		if err := c.BodyParser(data); err != nil {
+			return err
+		}
 		c.Set("Connection", "Keep-Alive")
 		c.Set("Keep-Alive", "timeout=72")
 		return c.JSON(data)
-  }
+	}
 )
 
 func main() {
