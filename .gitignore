@@ -3,3 +3,4 @@ yarn.lock
 package.json
 go.sum
 go.mod
+dist
