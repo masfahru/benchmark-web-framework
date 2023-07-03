@@ -3,6 +3,7 @@ package main
 import (
 	"github.com/labstack/echo/v4"
 	"net/http"
+	"sort"
 )
 
 type StatusOk struct {
@@ -50,6 +51,10 @@ var (
 		if err := c.Bind(data); err != nil {
 			return err
 		}
+		// sort data by age
+		sort.Slice(*data, func(i, j int) bool {
+			return (*data)[i].Age < (*data)[j].Age
+		})
 		c.Response().Header().Set(echo.HeaderConnection, "Keep-Alive")
 		c.Response().Header().Set("Keep-Alive", "timeout=72")
 		return c.JSON(http.StatusOK, data)

@@ -11,6 +11,6 @@ export class AppController {
 
   @Post()
   postHello(@Req() request: any) {
-    return request.body;
+    return request.body.sort((a, b) => a.age - b.age);;
   }
 }
